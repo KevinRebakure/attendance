@@ -15,6 +15,7 @@ function TabsLayout() {
     >
       {navBarIcons.map((icon) => (
         <Tabs.Screen
+          key={icon.screenName}
           name={icon.screenName}
           options={{
             title: icon.title,
