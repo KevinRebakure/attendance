@@ -1,27 +1,22 @@
-import { Colors } from "@/constants/colors";
-import { Text, TouchableHighlight, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
   return (
-    <View className="m-3 flex gap-4">
+    <View className="m-3 flex gap-4 relative h-full">
       {/* Top navigation */}
-      <View className="flex flex-row justify-between items-center">
-        <View className="flex flex-row gap-2">
-          <Text className="font-semibold">Host</Text>
-          <Text className="text-secondaryText">Guest</Text>
-        </View>
-        <Ionicons name="notifications-outline" size={24} color="black" />
+      <View className="flex flex-row gap-2">
+        <Text className="font-semibold">Host</Text>
+        <Text className="text-secondaryText">Guest</Text>
       </View>
 
       {/* Create a new group */}
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => console.log("Create new group")}
-        className="bg-primary rounded-lg self-start px-4 py-3 mt-4 active:text-primary"
-        underlayColor={Colors.darkPrimary}
+        className="absolute bottom-7 right-4 bg-primary rounded-full self-start p-3 mt-4 active:text-primary"
       >
-        <Text className="text-white">+ Create a new group</Text>
-      </TouchableHighlight>
+        <Ionicons name="person-add-outline" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 }
