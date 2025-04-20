@@ -1,6 +1,9 @@
 import { Colors } from "@/constants/colors";
-import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Tabs } from "expo-router";
+
+// bad type fix (AI fix)
+type IconName = React.ComponentProps<typeof Ionicons>["name"];
 
 function TabsLayout() {
   return (
@@ -10,36 +13,51 @@ function TabsLayout() {
         headerShadowVisible: false,
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? "home-sharp" : "home-outline"}
-              color={color}
-              size={24}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="about"
-        options={{
-          title: "About",
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={
-                focused ? "information-circle" : "information-circle-outline"
-              }
-              color={color}
-              size={24}
-            />
-          ),
-        }}
-      />
+      {navBarIcons.map((icon) => (
+        <Tabs.Screen
+          name={icon.screenName}
+          options={{
+            title: icon.title,
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={
+                  focused
+                    ? (icon.focusIcon as IconName)
+                    : (icon.unfocusIcon as IconName)
+                }
+                color={color}
+                size={icon.size}
+              />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }
+
+const navBarIcons = [
+  {
+    screenName: "index",
+    title: "People",
+    focusIcon: "people",
+    unfocusIcon: "people-outline",
+    size: 24,
+  },
+  {
+    screenName: "qrcode",
+    title: "QR Code",
+    focusIcon: "qr-code",
+    unfocusIcon: "qr-code-outline",
+    size: 24,
+  },
+  {
+    screenName: "profile",
+    title: "Profile",
+    focusIcon: "person-circle",
+    unfocusIcon: "person-circle-outline",
+    size: 24,
+  },
+];
 
 export default TabsLayout;

@@ -1,9 +1,11 @@
 import { Text, View } from "react-native";
 
-export default function Index() {
+function Profile() {
   return (
     <View className="flex items-center justify-center h-full">
-      <Text>People tab</Text>
+      <Text>User profile</Text>
     </View>
   );
 }
+
+export default Profile;
