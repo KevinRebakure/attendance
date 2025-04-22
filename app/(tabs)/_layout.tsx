@@ -39,7 +39,7 @@ function TabsLayout() {
 
 const navBarIcons = [
   {
-    screenName: "groups",
+    screenName: "(groups)",
     title: "Groups",
     focusIcon: "people",
     unfocusIcon: "people-outline",
