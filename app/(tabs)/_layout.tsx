@@ -11,6 +11,7 @@ function TabsLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
         headerShadowVisible: false,
+        
       }}
     >
       {navBarIcons.map((icon) => (
