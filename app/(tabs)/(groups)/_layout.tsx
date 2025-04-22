@@ -6,8 +6,6 @@ export default function GroupLayout() {
 
   const isHostActive = pathname === "/";
   const isGuestActive = pathname === "/guest";
-
-  console.log(pathname);
   return (
     <View className="m-3 flex gap-4 relative h-full">
       {/* Top navigation */}
