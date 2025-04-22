@@ -7,15 +7,14 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.white,
-        tabBarInactiveTintColor: Colors.white,
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.secondaryText,
         tabBarShowLabel: true,
         headerShadowVisible: false,
         tabBarStyle: {
           height: 60,
           margin: 12,
           borderRadius: 12,
-          backgroundColor: Colors.primary,
         },
       }}
     >
@@ -39,7 +38,7 @@ export default function TabsLayout() {
           tabBarLabelStyle: {
             display: "none",
           },
-          tabBarIcon: () => (
+          tabBarIcon: ({ focused, color }) => (
             <View
               style={{
                 width: 74,
@@ -49,7 +48,7 @@ export default function TabsLayout() {
                 alignItems: "center",
                 bottom: 8,
                 borderWidth: 2,
-                borderColor: Colors.white,
+                borderColor: focused ? Colors.primary : Colors.white,
               }}
             >
               <View
@@ -57,16 +56,16 @@ export default function TabsLayout() {
                   width: 70,
                   height: 70,
                   borderRadius: 35,
-                  backgroundColor: Colors.white,
+                  backgroundColor: focused ? Colors.primary : Colors.white,
                   justifyContent: "center",
                   alignItems: "center",
                   borderWidth: 2,
-                  borderColor: Colors.primary,
+                  borderColor: focused ? Colors.white : Colors.primary,
                 }}
               >
                 <Ionicons
                   name="qr-code-outline"
-                  color={Colors.primary}
+                  color={focused ? Colors.white : Colors.primary}
                   size={48}
                 />
               </View>
