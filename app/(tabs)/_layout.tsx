@@ -11,6 +11,7 @@ function TabsLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
         headerShadowVisible: false,
+        
       }}
     >
       {navBarIcons.map((icon) => (
@@ -39,8 +40,8 @@ function TabsLayout() {
 
 const navBarIcons = [
   {
-    screenName: "index",
-    title: "People",
+    screenName: "(groups)",
+    title: "Groups",
     focusIcon: "people",
     unfocusIcon: "people-outline",
     size: 24,
