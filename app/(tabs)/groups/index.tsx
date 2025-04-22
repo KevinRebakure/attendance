@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export default function QRCode() {
+export default function Host() {
   return (
     <View className="flex items-center justify-center h-full">
-      <Text>QR code</Text>
+      <Text>No groups created yet!</Text>
     </View>
   );
 }
