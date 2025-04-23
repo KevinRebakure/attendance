@@ -16,6 +16,7 @@ export default function TabsLayout() {
           margin: 12,
           borderRadius: 12,
         },
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tabs.Screen
