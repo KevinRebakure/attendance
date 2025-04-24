@@ -34,6 +34,7 @@ export default function Host() {
             <GroupListItem name={item.name} key={item.id} />
           )}
           keyExtractor={(item) => item.id}
+          className="w-full "
         />
 
         <CreateGroupModal
