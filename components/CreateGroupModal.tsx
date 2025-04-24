@@ -4,9 +4,11 @@ import { Modal, Pressable, Text, TextInput, View } from "react-native";
 export default function CreateGroupModal({
   isOpen,
   closeModal,
+  createGroup,
 }: {
   isOpen: boolean;
   closeModal: () => void;
+  createGroup: (name: string) => void;
 }) {
   const [input, setInput] = useState("");
   return (
@@ -33,6 +35,7 @@ export default function CreateGroupModal({
               onPress={() => {
                 closeModal();
                 console.log(input);
+                createGroup(input);
                 setInput("");
               }}
             >
