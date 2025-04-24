@@ -23,6 +23,13 @@ export default function Host() {
   const [modalVisible, setModalVisible] = useState(false);
   const [groups, setGroups] = useState(initialGroups);
 
+  const createGroup = (name: string) => {
+    setGroups((prev) => [
+      ...prev,
+      { name, id: (groups.length + 1).toString() },
+    ]);
+  };
+
   return (
     <>
       <View className="flex items-center justify-center h-full">
@@ -40,6 +47,7 @@ export default function Host() {
         <CreateGroupModal
           isOpen={modalVisible}
           closeModal={() => setModalVisible(false)}
+          createGroup={createGroup}
         />
       </View>
       <TouchableOpacity
