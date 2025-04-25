@@ -1,1 +1,1 @@
-# Welcome to Checkin
+# Welcome to the Attendance app
