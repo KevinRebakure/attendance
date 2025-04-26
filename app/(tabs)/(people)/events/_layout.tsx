@@ -1,20 +1,44 @@
-import { Link, Slot } from "expo-router";
+import { usePathname } from "expo-router";
+import { TabList, Tabs, TabSlot, TabTrigger } from "expo-router/ui";
 import { Text, View } from "react-native";
 
 function EventsLayout() {
+  const pathname = usePathname();
+
+  const onGuestTab = pathname === "/events/guest";
+  const onHostTab = pathname === "/events/host";
+
   return (
     <View className="m-3 flex gap-4 relative h-full">
-      {/* Top navigation */}
-      <View className="flex flex-row gap-4 m-3">
-        <Link href="/events/host" className="text-xl">
-          <Text>Host</Text>
-        </Link>
-        <Link href="/events/guest" className="text-xl">
-          <Text>Guest</Text>
-        </Link>
-      </View>
-      {/* Render the current route */}
-      <Slot />
+      {/* Created a custom tabs by using multiple tabs bar:  https://docs.expo.dev/router/advanced/custom-tabs/#multiple-tab-bars*/}
+      <Tabs>
+        {/* A custom tab bar */}
+        <View className="flex flex-row justify-start gap-4 mb-4">
+          <TabTrigger
+            name="guest"
+            className={`${onGuestTab && "border-b-2 border-primary"} text-xl p-2`}
+          >
+            <Text>Guest</Text>
+          </TabTrigger>
+          <TabTrigger
+            name="host"
+            className={`${onHostTab && "border-b-2 border-primary"} text-xl p-2`}
+          >
+            <Text>Host</Text>
+          </TabTrigger>
+        </View>
+
+        <TabList style={{ display: "none" }}>
+          <TabTrigger name="guest" href="/events/guest">
+            <Text>Guest</Text>
+          </TabTrigger>
+          <TabTrigger name="host" href="/events/host">
+            <Text>Host</Text>
+          </TabTrigger>
+        </TabList>
+        {/* Render the route here */}
+        <TabSlot />
+      </Tabs>
     </View>
   );
 }
