@@ -1,7 +1,7 @@
 import { Colors } from "@/constants/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link, Tabs, usePathname } from "expo-router";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 export default function TabsLayout() {
   const pathname = usePathname();
@@ -27,6 +27,7 @@ export default function TabsLayout() {
         name="(people)"
         options={{
           title: "People",
+          headerTitleStyle: { display: "none" },
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "people" : "people-outline"}
@@ -52,6 +53,9 @@ export default function TabsLayout() {
                   size={28}
                 />
               </Link>
+              <Text className="text-xl font-semibold">
+                {onEvents ? "Events" : "Groups"}
+              </Text>
             </View>
           ),
         }}

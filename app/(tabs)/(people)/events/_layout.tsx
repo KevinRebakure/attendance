@@ -15,16 +15,16 @@ function EventsLayout() {
         {/* A custom tab bar */}
         <View className="flex flex-row justify-start gap-4 mb-4">
           <TabTrigger
-            name="guest"
-            className={`${onGuestTab && "border-b-2 border-primary"} text-xl p-2`}
-          >
-            <Text>Guest</Text>
-          </TabTrigger>
-          <TabTrigger
             name="host"
             className={`${onHostTab && "border-b-2 border-primary"} text-xl p-2`}
           >
             <Text>Host</Text>
+          </TabTrigger>
+          <TabTrigger
+            name="guest"
+            className={`${onGuestTab && "border-b-2 border-primary"} text-xl p-2`}
+          >
+            <Text>Guest</Text>
           </TabTrigger>
         </View>
 
