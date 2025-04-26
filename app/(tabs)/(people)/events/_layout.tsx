@@ -9,7 +9,7 @@ function EventsLayout() {
   const onHostTab = pathname === "/events/host";
 
   return (
-    <View className="m-3 flex gap-4 relative h-full">
+    <View className="m-3 flex gap-4 h-full relative">
       {/* Created a custom tabs by using multiple tabs bar:  https://docs.expo.dev/router/advanced/custom-tabs/#multiple-tab-bars*/}
       <Tabs>
         {/* A custom tab bar */}
@@ -44,6 +44,7 @@ function EventsLayout() {
             <Text>Host</Text>
           </TabTrigger>
         </TabList>
+
         {/* Render the route here */}
         <TabSlot />
       </Tabs>
