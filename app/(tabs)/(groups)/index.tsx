@@ -4,28 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
-const initialGroups = [
-  { name: "ALU", id: "1" },
-  { name: "TheGym", id: "2" },
-  { name: "End of year party", id: "3" },
-  { name: "Book Club", id: "4" },
-  { name: "Team Alpha", id: "5" },
-  { name: "Coding Buddies", id: "6" },
-  { name: "Movie Night", id: "7" },
-  { name: "Family Chat", id: "8" },
-  { name: "Road Trip Crew", id: "9" },
-  { name: "Music Makers", id: "10" },
-  { name: "Game Night", id: "11" },
-  { name: "Hiking Friends", id: "12" },
-  { name: "Project Phoenix", id: "13" },
-  { name: "Startup Squad", id: "14" },
-  { name: "Writers Circle", id: "15" },
-  { name: "Coffee Lovers", id: "16" },
-  { name: "Basketball Team", id: "17" },
-  { name: "Photography Club", id: "18" },
-  { name: "Debate Society", id: "19" },
-  { name: "Language Exchange", id: "20" },
-];
+const initialGroups = [{ name: "ALU", id: "1" }];
 
 export default function Host() {
   const [modalVisible, setModalVisible] = useState(false);
