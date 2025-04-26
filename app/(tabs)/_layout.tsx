@@ -1,6 +1,6 @@
 import { Colors } from "@/constants/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Tabs } from "expo-router";
+import { Link, Tabs } from "expo-router";
 import { View } from "react-native";
 
 export default function TabsLayout() {
@@ -20,9 +20,9 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="(groups)"
+        name="(people)"
         options={{
-          title: "Groups",
+          title: "People",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "people" : "people-outline"}
@@ -30,16 +30,30 @@ export default function TabsLayout() {
               size={24}
             />
           ),
+          headerLeft: () => (
+            <View className="flex flex-row gap-4 m-3">
+              <Link href="/events/host" className="text-xl">
+                <Ionicons
+                  name="calendar-number-outline"
+                  size={24}
+                  color="black"
+                />
+              </Link>
+              <Link href="/groups/owned-by-me" className="text-xl">
+                <Ionicons name="people-outline" size={24} color="black" />
+              </Link>
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
-        name="qrcode"
+        name="index"
         options={{
           title: "QR Code",
           tabBarLabelStyle: {
             display: "none",
           },
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused }) => (
             <View
               style={{
                 width: 74,
