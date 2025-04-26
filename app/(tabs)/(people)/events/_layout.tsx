@@ -16,15 +16,23 @@ function EventsLayout() {
         <View className="flex flex-row justify-start gap-4 mb-4">
           <TabTrigger
             name="host"
-            className={`${onHostTab && "border-b-2 border-primary"} text-xl p-2`}
+            className={`${onHostTab && "border-b-2 border-primary"}  p-2`}
           >
-            <Text>Host</Text>
+            <Text
+              className={`${onHostTab ? "text-primary" : "text-primaryText"} text-xl font-semibold`}
+            >
+              Host
+            </Text>
           </TabTrigger>
           <TabTrigger
             name="guest"
-            className={`${onGuestTab && "border-b-2 border-primary"} text-xl p-2`}
+            className={`${onGuestTab && "border-b-2 border-primary"}  p-2`}
           >
-            <Text>Guest</Text>
+            <Text
+              className={`${onGuestTab ? "text-primary" : "text-primaryText"} text-xl font-semibold`}
+            >
+              Guest
+            </Text>
           </TabTrigger>
         </View>
 

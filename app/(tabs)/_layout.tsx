@@ -89,12 +89,12 @@ export default function TabsLayout() {
                   justifyContent: "center",
                   alignItems: "center",
                   borderWidth: 2,
-                  borderColor: focused ? Colors.white : Colors.primary,
+                  borderColor: focused ? Colors.white : Colors.secondaryText,
                 }}
               >
                 <Ionicons
                   name="qr-code-outline"
-                  color={focused ? Colors.white : Colors.primary}
+                  color={focused ? Colors.white : Colors.secondaryText}
                   size={48}
                 />
               </View>

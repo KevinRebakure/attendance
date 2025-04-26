@@ -16,15 +16,23 @@ export default function GroupsLayout() {
         <View className="flex flex-row justify-start gap-4 mb-4">
           <TabTrigger
             name="owned-by-me"
-            className={`${onOwnedByMe && "border-b-2 border-primary"} text-xl p-2`}
+            className={`${onOwnedByMe && "border-b-2 border-primary"}  p-2`}
           >
-            <Text>Owned by me</Text>
+            <Text
+              className={`${onOwnedByMe ? "text-primary" : "text-primaryText"} text-xl font-semibold`}
+            >
+              Owned by me
+            </Text>
           </TabTrigger>
           <TabTrigger
             name="member-to"
-            className={`${onMemberTo && "border-b-2 border-primary"} text-xl p-2`}
+            className={`${onMemberTo && "border-b-2 border-primary"}  p-2`}
           >
-            <Text>Member to</Text>
+            <Text
+              className={`${onMemberTo ? "text-primary" : "text-primaryText"} text-xl font-semibold`}
+            >
+              Member to
+            </Text>
           </TabTrigger>
         </View>
 
