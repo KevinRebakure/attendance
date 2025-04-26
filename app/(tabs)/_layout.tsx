@@ -1,9 +1,13 @@
 import { Colors } from "@/constants/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Link, Tabs } from "expo-router";
+import { Link, Tabs, usePathname } from "expo-router";
 import { View } from "react-native";
 
 export default function TabsLayout() {
+  const pathname = usePathname();
+  const onGroups = pathname.includes("groups");
+  const onEvents = pathname.includes("events");
+
   return (
     <Tabs
       screenOptions={{
@@ -34,13 +38,19 @@ export default function TabsLayout() {
             <View className="flex flex-row gap-4 m-3">
               <Link href="/events/host" className="text-xl">
                 <Ionicons
-                  name="calendar-number-outline"
-                  size={24}
-                  color="black"
+                  name={
+                    onEvents ? "calendar-number" : "calendar-number-outline"
+                  }
+                  color={onEvents ? Colors.primary : Colors.secondaryText}
+                  size={28}
                 />
               </Link>
               <Link href="/groups/owned-by-me" className="text-xl">
-                <Ionicons name="people-outline" size={24} color="black" />
+                <Ionicons
+                  name={onGroups ? "people" : "people-outline"}
+                  color={onGroups ? Colors.primary : Colors.secondaryText}
+                  size={28}
+                />
               </Link>
             </View>
           ),
