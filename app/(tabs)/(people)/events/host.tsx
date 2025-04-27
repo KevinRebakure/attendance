@@ -1,24 +1,27 @@
-import { CreateGroupModal, GroupListItem } from "@/components";
+import { CreateEventModal, GroupListItem } from "@/components";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 
-const initialGroups = [{ name: "ALU", id: "1" }];
+const initialEvents = [
+  { name: "Figma workshop", id: "1" },
+  { name: "NextJS DevTalk", id: "2" },
+];
 
 export default function Host() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [groups, setGroups] = useState(initialGroups);
+  const [events, setEvents] = useState(initialEvents);
 
-  const createGroup = (name: string) => {
-    setGroups((prev) => [
+  const createEvent = (name: string) => {
+    setEvents((prev) => [
       ...prev,
-      { name, id: (groups.length + 1).toString() },
+      { name, id: (events.length + 1).toString() },
     ]);
   };
   return (
     <>
       <FlatList
-        data={groups}
+        data={events}
         renderItem={({ item }) => (
           <GroupListItem name={item.name} key={item.id} />
         )}
@@ -33,10 +36,10 @@ export default function Host() {
         <MaterialCommunityIcons name="calendar-plus" size={24} color="white" />
       </TouchableOpacity>
 
-      <CreateGroupModal
+      <CreateEventModal
         isOpen={modalVisible}
         closeModal={() => setModalVisible(false)}
-        createGroup={createGroup}
+        createEvent={createEvent}
       />
     </>
   );
