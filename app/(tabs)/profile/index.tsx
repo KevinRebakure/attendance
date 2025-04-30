@@ -6,7 +6,9 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useProfileStore } from "@/stores/profileStore";
 export default function Profile() {
+  const {profile} = useProfileStore()
   const router = useRouter();
   const deleteAccount = () => {
     console.log("Delete account");
@@ -15,7 +17,7 @@ export default function Profile() {
     console.log("Logout");
   };
   const editProfile = () => {
-    router.navigate("/profile/editProfile");
+    router.push("/profile/editProfile");
   };
 
   return (
@@ -31,9 +33,9 @@ export default function Profile() {
           </View>
           <View>
             <Text className="text-xl font-bold text-center">
-              Kevin Rebakure
+             {profile.username}
             </Text>
-            <Text className="text-center">kevinrebakure@gmail.com</Text>
+            <Text className="text-center">{profile.email}</Text>
           </View>
         </View>
 

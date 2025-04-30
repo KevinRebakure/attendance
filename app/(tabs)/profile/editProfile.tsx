@@ -1,4 +1,6 @@
+import { useProfileStore } from "@/stores/profileStore";
 import Feather from "@expo/vector-icons/Feather";
+import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import {
   Image,
@@ -10,16 +12,31 @@ import {
 } from "react-native";
 
 export default function Profile() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
+  const router = useRouter()
+  const {profile, updateProfile} = useProfileStore()
+  const [name, setName] = useState(profile.username);
+  const [email, setEmail] = useState(profile.email);
+  const [currentPassword, setCurrentPassword] = useState(profile.password);
+
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
+
 
   const uploadPhoto = () => {
     console.log("Upload a new photo");
   };
 
+  const saveChanges = () => {
+    console.log('Saving changes...')
+    updateProfile({
+      username: name,
+      email
+    })
+
+    router.dismiss()
+  }
+
+  const discardChanges = () => {}
   return (
     <ScrollView>
       <View className="flex h-full gap-20 p-4">
@@ -81,9 +98,7 @@ export default function Profile() {
           </Pressable>
           <Pressable
             className="bg-primary p-4 flex-1 rounded-lg "
-            onPress={() => {
-              console.log("Save");
-            }}
+            onPress={saveChanges}
           >
             <Text className="text-white text-center">Save</Text>
           </Pressable>
