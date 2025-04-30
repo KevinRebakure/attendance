@@ -5,8 +5,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
-
+import { useRouter } from "expo-router";
 export default function Profile() {
+  const router = useRouter();
   const deleteAccount = () => {
     console.log("Delete account");
   };
@@ -14,7 +15,7 @@ export default function Profile() {
     console.log("Logout");
   };
   const editProfile = () => {
-    console.log("Edit your profile");
+    router.navigate("/profile/editProfileModal");
   };
 
   return (
