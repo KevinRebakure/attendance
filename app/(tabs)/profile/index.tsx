@@ -15,7 +15,7 @@ export default function Profile() {
     console.log("Logout");
   };
   const editProfile = () => {
-    router.navigate("/profile/editProfileModal");
+    router.navigate("/profile/editProfile");
   };
 
   return (
