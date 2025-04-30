@@ -104,7 +104,7 @@ const InputField = ({
   setValue: (text: string) => void;
 }) => {
   return (
-    <View>
+    <View className="flex gap-2">
       <Text className="text-lg">{label}</Text>
       <TextInput
         placeholder={placeholder}
