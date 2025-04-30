@@ -11,12 +11,12 @@ import {
   View,
 } from "react-native";
 
-export default function Profile() {
+export default function EditProfile() {
   const router = useRouter()
   const {profile, updateProfile} = useProfileStore()
   const [name, setName] = useState(profile.username);
   const [email, setEmail] = useState(profile.email);
-  const [currentPassword, setCurrentPassword] = useState(profile.password);
+  const [currentPassword, setCurrentPassword] = useState("");
 
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
@@ -36,7 +36,10 @@ export default function Profile() {
     router.dismiss()
   }
 
-  const discardChanges = () => {}
+  const discardChanges = () => {
+    router.dismiss()
+  }
+  
   return (
     <ScrollView>
       <View className="flex h-full gap-20 p-4">
@@ -92,7 +95,7 @@ export default function Profile() {
         <View className="flex flex-row items-center justify-between gap-2">
           <Pressable
             className="bg-dividor p-4 flex-1 rounded-lg "
-            onPress={() => console.log("Discard changes")}
+            onPress={discardChanges}
           >
             <Text className="text-white text-center">Cancel</Text>
           </Pressable>
