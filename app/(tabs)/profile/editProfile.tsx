@@ -8,12 +8,22 @@ import {
   ScrollView,
   Text,
   TextInput,
+  TextInputProps,
   View,
 } from "react-native";
+
+// AI fix
+interface PasswordInputFieldProps extends Omit<TextInputProps, 'secureTextEntry'> {
+  label: string;
+  setValue?: (text: string) => void; // Make this optional since we'll use onChangeText from TextInputProps
+}
+
 
 export default function EditProfile() {
   const router = useRouter()
   const {profile, updateProfile} = useProfileStore()
+  const [editPasswordMode, setEditPasswordMode] = useState(false)
+
   const [name, setName] = useState(profile.username);
   const [email, setEmail] = useState(profile.email);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -30,7 +40,8 @@ export default function EditProfile() {
     console.log('Saving changes...')
     updateProfile({
       username: name,
-      email
+      email,
+      password: repeatNewPassword === newPassword ? newPassword : profile.password,
     })
 
     router.dismiss()
@@ -39,7 +50,15 @@ export default function EditProfile() {
   const discardChanges = () => {
     router.dismiss()
   }
-  
+
+  const turnOnPasswordEditingMode = ()=>{
+    if (currentPassword.trim()=== profile.password) {
+      setEditPasswordMode(true)  
+    } else {
+      console.log("Passwords don't match")
+    }
+  }
+
   return (
     <ScrollView>
       <View className="flex h-full gap-20 p-4">
@@ -73,10 +92,12 @@ export default function EditProfile() {
             <PasswordInputField
               value={currentPassword}
               setValue={setCurrentPassword}
-              label="Current password"
+              label="Enter your current password"
               placeholder="Enter your current password"
+              onEndEditing={turnOnPasswordEditingMode}
             />
-            <PasswordInputField
+           {editPasswordMode &&  <>
+           <PasswordInputField
               value={newPassword}
               setValue={setNewPassword}
               label="New password"
@@ -87,7 +108,7 @@ export default function EditProfile() {
               setValue={setRepeatNewPassword}
               label="Repeat new password"
               placeholder="Repeat new password"
-            />
+            /></>}
           </View>
         </View>
 
@@ -135,22 +156,32 @@ const InputField = ({
   );
 };
 
+
+// AI fix
 const PasswordInputField = ({
-  value,
-  placeholder,
   label,
   setValue,
-}: {
-  value: string;
-  placeholder: string;
-  label: string;
-  setValue: (text: string) => void;
-}) => {
+  value,
+  onChangeText,
+  className,
+  style,
+  ...restProps // This collects all other TextInput props
+}: PasswordInputFieldProps) => {
   const [safeEntryOn, setSafeEntryOn] = useState(true);
   const inputRef = useRef<TextInput>(null);
 
   const toggleEye = () => {
     setSafeEntryOn((prev) => !prev);
+    // // Optional: refocus the input
+    // setTimeout(() => {
+    //   inputRef.current?.focus();
+    // }, 100);
+  };
+
+  // Handle the text change - support both setValue and onChangeText
+  const handleTextChange = (text: string) => {
+    if (setValue) setValue(text);
+    if (onChangeText) onChangeText(text);
   };
 
   return (
@@ -159,11 +190,12 @@ const PasswordInputField = ({
       <View className="flex flex-row items-center gap-2 border border-black rounded-lg py-1 px-2">
         <TextInput
           ref={inputRef}
-          placeholder={placeholder}
           value={value}
-          onChangeText={setValue}
-          className="flex-1"
+          onChangeText={handleTextChange}
+          className={`flex-1 ${className || ''}`}
+          style={style}
           secureTextEntry={safeEntryOn}
+          {...restProps} // Spread the rest of the props to TextInput
         />
         <Pressable onPress={toggleEye}>
           {safeEntryOn ? (
@@ -176,6 +208,7 @@ const PasswordInputField = ({
     </View>
   );
 };
+
 
 const UploadProfilePhoto = () => (
   <View className="relative w-32 h-32 rounded-full border-2 border-primary p-1">
