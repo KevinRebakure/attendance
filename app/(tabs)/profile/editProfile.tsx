@@ -25,16 +25,7 @@ export default function Profile() {
         {/* Upload profile picture */}
         <View className="flex items-center gap-3 mt-16">
           <Pressable onPress={uploadPhoto}>
-            <View className="relative w-32 h-32 rounded-full border-2 border-primary p-1">
-              <Image
-                source={require("@/assets/images/avatar.png")}
-                className="w-full h-full object-cover rounded-full opacity-70"
-              />
-              <Image
-                source={require("@/assets/images/edit.png")}
-                className="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              />
-            </View>
+            <UploadProfilePhoto />
           </Pressable>
         </View>
 
@@ -124,3 +115,16 @@ const InputField = ({
     </View>
   );
 };
+
+const UploadProfilePhoto = () => (
+  <View className="relative w-32 h-32 rounded-full border-2 border-primary p-1">
+    <Image
+      source={require("@/assets/images/avatar.png")}
+      className="w-full h-full object-cover rounded-full opacity-70"
+    />
+    <Image
+      source={require("@/assets/images/edit.png")}
+      className="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    />
+  </View>
+);
