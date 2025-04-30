@@ -41,54 +41,40 @@ export default function Profile() {
         <View className="flex gap-20">
           {/* Display user */}
           <View className="flex gap-3">
-            {/* User name */}
-            <Text className="text-lg">User name</Text>
-            <TextInput
-              placeholder="Edit your name"
+            <InputField
               value={name}
-              onChangeText={setName}
-              className="h-10 border border-black rounded-lg p-2"
+              setValue={setName}
+              label="User name"
+              placeholder="Edit your name"
             />
-
-            {/* Email */}
-            <Text className="text-lg">Email</Text>
-            <TextInput
-              placeholder="Set a different email"
+            <InputField
               value={email}
-              onChangeText={setEmail}
-              className="h-10 border border-black rounded-lg p-2"
+              setValue={setEmail}
+              label="Email"
+              placeholder="Set a different email"
             />
           </View>
 
           {/* Password */}
           <View className="flex gap-4">
-            {/* Change password */}
-            {/* Current password */}
             <Text className="text-xl font-bold">Change your password</Text>
-            <Text className="text-lg">Current password</Text>
-            <TextInput
-              placeholder="Enter your current password"
+            <InputField
               value={currentPassword}
-              onChangeText={setCurrentPassword}
-              className="h-10 border border-black rounded-lg p-2"
+              setValue={setCurrentPassword}
+              label="Current password"
+              placeholder="Enter your current password"
             />
-
-            {/* New password */}
-            <Text className="text-lg">New password</Text>
-            <TextInput
-              placeholder="Enter your new password"
+            <InputField
               value={newPassword}
-              onChangeText={setNewPassword}
-              className="h-10 border border-black rounded-lg p-2"
+              setValue={setNewPassword}
+              label="New password"
+              placeholder="Enter new password"
             />
-
-            {/* Re-enter new password */}
-            <Text className="text-lg">Re-enter new password</Text>
-            <TextInput
-              placeholder="Re-type your new password"
+            <InputField
               value={reEnterNewPassword}
-              onChangeText={setReEnterNewPassword}
-              className="h-10 border border-black rounded-lg p-2"
+              setValue={setReEnterNewPassword}
+              label="Repeat new password"
+              placeholder="Repeat new password"
             />
           </View>
         </View>
@@ -114,3 +100,27 @@ export default function Profile() {
     </ScrollView>
   );
 }
+
+const InputField = ({
+  value,
+  placeholder,
+  label,
+  setValue,
+}: {
+  value: string;
+  placeholder: string;
+  label: string;
+  setValue: (text: string) => void;
+}) => {
+  return (
+    <View>
+      <Text className="text-lg">{label}</Text>
+      <TextInput
+        placeholder={placeholder}
+        value={value}
+        onChangeText={setValue}
+        className="h-10 border border-black rounded-lg p-2"
+      />
+    </View>
+  );
+};
