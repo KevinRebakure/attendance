@@ -4,7 +4,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
 
 export default function Profile() {
   const deleteAccount = () => {
@@ -18,78 +18,89 @@ export default function Profile() {
   };
 
   return (
-    <View className="flex h-full gap-6 p-4">
-      {/* Avatar */}
-      <View className="flex items-center ">
-        <View className="w-32 h-32 rounded-full border-2 border-primary p-1">
-          <Image
-            source={require("@/assets/images/profile.jpg")}
-            className="w-full h-full object-cover rounded-full"
-          />
+    <ScrollView>
+      <View className="flex h-full gap-12 p-4">
+        {/* Avatar */}
+        <View className="flex items-center gap-3 mt-16">
+          <View className="w-32 h-32 rounded-full border-2 border-primary p-1">
+            <Image
+              source={require("@/assets/images/profile.jpg")}
+              className="w-full h-full object-cover rounded-full"
+            />
+          </View>
+          <View>
+            <Text className="text-xl font-bold text-center">
+              Kevin Rebakure
+            </Text>
+            <Text className="text-center">kevinrebakure@gmail.com</Text>
+          </View>
         </View>
-        <View>
-          <Text className="text-xl font-bold text-center">Kevin Rebakure</Text>
-          <Text className="text-center">kevinrebakure@gmail.com</Text>
-        </View>
-      </View>
 
-      {/* Action buttons */}
-      <View className="flex flex-row gap-2">
-        <Pressable className="border p-2 rounded-lg" onPress={logOut}>
-          <View className="flex flex-row gap-1">
-            <SimpleLineIcons name="logout" size={24} color="black" />
-            <Text className="text-lg">Logout</Text>
+        {/* Action buttons */}
+        <View className="flex flex-row gap-2">
+          <Pressable className="border p-2 rounded-lg" onPress={logOut}>
+            <View className="flex flex-row gap-1">
+              <SimpleLineIcons name="logout" size={24} color="black" />
+              <Text className="text-lg">Logout</Text>
+            </View>
+          </Pressable>
+
+          <Pressable className="border p-2 rounded-lg" onPress={editProfile}>
+            <View className="flex flex-row gap-1">
+              <Feather name="edit-3" size={24} color="black" />
+              <Text className="text-lg">Edit profile</Text>
+            </View>
+          </Pressable>
+        </View>
+
+        {/* Support section */}
+        <View className="w-full flex gap-5">
+          <Text className="font-bold">Support us</Text>
+          <View className="flex flex-row gap-2">
+            <AntDesign name="github" size={24} color="black" />
+            <Text className="text-lg">Star our repo</Text>
+          </View>
+          <View className="flex flex-row gap-2">
+            <FontAwesome name="heart-o" size={24} color="black" />
+            <Text className="text-lg">Sponsor</Text>
+          </View>
+          <View className="flex flex-row gap-2">
+            <Ionicons name="bug-outline" size={24} color="black" />
+            <Text className="text-lg">Report an issue</Text>
+          </View>
+        </View>
+
+        {/* About section */}
+        <View className="w-full flex gap-5">
+          <Text className="font-bold">About</Text>
+          <View className="flex flex-row gap-2">
+            <Feather name="help-circle" size={24} color="black" />
+
+            <Text className="text-lg">How to</Text>
+          </View>
+          <View className="flex flex-row gap-2">
+            <Feather name="book-open" size={24} color="black" />
+            <Text className="text-lg">Terms of service and credits</Text>
+          </View>
+          <View className="flex flex-row gap-2">
+            <AntDesign name="rocket1" size={24} color="black" />
+            <Text className="text-lg">rebakure.com</Text>
+          </View>
+        </View>
+
+        <Pressable onPress={deleteAccount}>
+          <View className="flex flex-row gap-2 border border-red-600 p-3 rounded-xl w-52">
+            <MaterialCommunityIcons
+              name="delete-outline"
+              size={24}
+              color="red"
+            />
+            <Text className="text-red-600 text-lg font-bold">
+              Delete account
+            </Text>
           </View>
         </Pressable>
-
-        <Pressable className="border p-2 rounded-lg" onPress={editProfile}>
-          <View className="flex flex-row gap-1">
-            <Feather name="edit-3" size={24} color="black" />
-            <Text className="text-lg">Edit profile</Text>
-          </View>
-        </Pressable>
       </View>
-
-      {/* Support section */}
-      <View className="w-full flex gap-3">
-        <Text className="font-bold">Support us</Text>
-        <View className="flex flex-row gap-2">
-          <AntDesign name="github" size={24} color="black" />
-          <Text className="text-lg">Star our repo</Text>
-        </View>
-        <View className="flex flex-row gap-2">
-          <FontAwesome name="heart-o" size={24} color="black" />
-          <Text className="text-lg">Sponsor</Text>
-        </View>
-        <View className="flex flex-row gap-2">
-          <Ionicons name="bug-outline" size={24} color="black" />
-          <Text className="text-lg">Report an issue</Text>
-        </View>
-      </View>
-
-      {/* About section */}
-      <View className="w-full flex gap-3">
-        <Text className="font-bold">About</Text>
-        <View className="flex flex-row gap-2">
-          <Feather name="help-circle" size={24} color="black" />
-
-          <Text className="text-lg">How to</Text>
-        </View>
-        <View className="flex flex-row gap-2">
-          <Feather name="book-open" size={24} color="black" />
-          <Text className="text-lg">Terms of service and credits</Text>
-        </View>
-        <View className="flex flex-row gap-2">
-          <AntDesign name="rocket1" size={24} color="black" />
-          <Text className="text-lg">rebakure.com</Text>
-        </View>
-      </View>
-      <Pressable onPress={deleteAccount}>
-        <View className="flex flex-row gap-2 border border-red-600 p-3 rounded-xl w-52">
-          <MaterialCommunityIcons name="delete-outline" size={24} color="red" />
-          <Text className="text-red-600 text-lg font-bold">Delete account</Text>
-        </View>
-      </Pressable>
-    </View>
+    </ScrollView>
   );
 }
