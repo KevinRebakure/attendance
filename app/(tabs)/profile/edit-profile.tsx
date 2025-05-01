@@ -12,7 +12,6 @@ import {
 export default function EditProfile() {
   const router = useRouter();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
 
   const uploadPhoto = () => {
     console.log("Upload a new photo");
@@ -36,23 +35,14 @@ export default function EditProfile() {
           </Pressable>
         </View>
 
-        <View className="flex gap-20">
-          {/* Display user */}
-          <View className="flex gap-3">
-            <InputField
-              value={name}
-              setValue={setName}
-              label="User name"
-              placeholder="Edit your name"
-            />
-            <InputField
-              value={email}
-              setValue={setEmail}
-              label="Email"
-              placeholder="Set a different email"
-            />
-          </View>
-        </View>
+        <Text className="text-lg">User name</Text>
+        <TextInput
+          placeholder={"Edit your name"}
+          value={name}
+          onChangeText={setName}
+          className="h-10 border border-black rounded-lg p-2"
+        />
+
         {/* Action buttons */}
         <View className="flex flex-row items-center justify-between gap-2">
           <Pressable
@@ -72,30 +62,6 @@ export default function EditProfile() {
     </ScrollView>
   );
 }
-
-const InputField = ({
-  value,
-  placeholder,
-  label,
-  setValue,
-}: {
-  value: string;
-  placeholder: string;
-  label: string;
-  setValue: (text: string) => void;
-}) => {
-  return (
-    <View className="flex gap-2">
-      <Text className="text-lg">{label}</Text>
-      <TextInput
-        placeholder={placeholder}
-        value={value}
-        onChangeText={setValue}
-        className="h-10 border border-black rounded-lg p-2"
-      />
-    </View>
-  );
-};
 
 const UploadProfilePhoto = () => (
   <View className="relative w-32 h-32 rounded-full border-2 border-primary p-1">
