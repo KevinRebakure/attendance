@@ -1,63 +1,34 @@
-import { useProfileStore } from "@/stores/profileStore";
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   Image,
   Pressable,
   ScrollView,
   Text,
   TextInput,
-  TextInputProps,
   View,
 } from "react-native";
 
-// AI fix
-interface PasswordInputFieldProps extends Omit<TextInputProps, 'secureTextEntry'> {
-  label: string;
-  setValue?: (text: string) => void; // Make this optional since we'll use onChangeText from TextInputProps
-}
-
-
 export default function EditProfile() {
-  const router = useRouter()
-  const {profile, updateProfile} = useProfileStore()
-  const [editPasswordMode, setEditPasswordMode] = useState(false)
-
-  const [name, setName] = useState(profile.username);
-  const [email, setEmail] = useState(profile.email);
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
-
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
-
 
   const uploadPhoto = () => {
     console.log("Upload a new photo");
   };
 
   const saveChanges = () => {
-    console.log('Saving changes...')
-    updateProfile({
-      username: name,
-      email,
-      password: repeatNewPassword === newPassword ? newPassword : profile.password,
-    })
-
-    router.dismiss()
-  }
+    router.dismiss();
+  };
 
   const discardChanges = () => {
-    router.dismiss()
-  }
-
-  const turnOnPasswordEditingMode = ()=>{
-    if (currentPassword.trim()=== profile.password) {
-      setEditPasswordMode(true)  
-    } else {
-      console.log("Passwords don't match")
-    }
-  }
+    router.dismiss();
+  };
 
   return (
     <ScrollView>
@@ -94,10 +65,8 @@ export default function EditProfile() {
               setValue={setCurrentPassword}
               label="Enter your current password"
               placeholder="Enter your current password"
-              onEndEditing={turnOnPasswordEditingMode}
             />
-           {editPasswordMode &&  <>
-           <PasswordInputField
+            <PasswordInputField
               value={newPassword}
               setValue={setNewPassword}
               label="New password"
@@ -108,7 +77,7 @@ export default function EditProfile() {
               setValue={setRepeatNewPassword}
               label="Repeat new password"
               placeholder="Repeat new password"
-            /></>}
+            />
           </View>
         </View>
 
@@ -156,32 +125,25 @@ const InputField = ({
   );
 };
 
-
-// AI fix
 const PasswordInputField = ({
   label,
   setValue,
   value,
-  onChangeText,
-  className,
-  style,
-  ...restProps // This collects all other TextInput props
-}: PasswordInputFieldProps) => {
+  placeholder,
+}: {
+  label: string;
+  placeholder: string;
+  setValue: (text: string) => void;
+  value: string;
+}) => {
   const [safeEntryOn, setSafeEntryOn] = useState(true);
-  const inputRef = useRef<TextInput>(null);
 
   const toggleEye = () => {
     setSafeEntryOn((prev) => !prev);
-    // // Optional: refocus the input
-    // setTimeout(() => {
-    //   inputRef.current?.focus();
-    // }, 100);
   };
 
-  // Handle the text change - support both setValue and onChangeText
   const handleTextChange = (text: string) => {
-    if (setValue) setValue(text);
-    if (onChangeText) onChangeText(text);
+    setValue(text);
   };
 
   return (
@@ -189,13 +151,11 @@ const PasswordInputField = ({
       <Text className="text-lg">{label}</Text>
       <View className="flex flex-row items-center gap-2 border border-black rounded-lg py-1 px-2">
         <TextInput
-          ref={inputRef}
           value={value}
           onChangeText={handleTextChange}
-          className={`flex-1 ${className || ''}`}
-          style={style}
           secureTextEntry={safeEntryOn}
-          {...restProps} // Spread the rest of the props to TextInput
+          placeholder={placeholder}
+          className="flex-1 flex-row flex justify-center items-center"
         />
         <Pressable onPress={toggleEye}>
           {safeEntryOn ? (
@@ -208,7 +168,6 @@ const PasswordInputField = ({
     </View>
   );
 };
-
 
 const UploadProfilePhoto = () => (
   <View className="relative w-32 h-32 rounded-full border-2 border-primary p-1">

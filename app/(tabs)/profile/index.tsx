@@ -6,9 +6,9 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import * as Linking from "expo-linking";
 import { Link, useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
+
 export default function Profile() {
   const { profile } = useProfileStore();
   const router = useRouter();
@@ -19,9 +19,10 @@ export default function Profile() {
     console.log("Logout");
   };
   const editProfile = () => {
-    router.push("/profile/editProfile");
+    router.push("/profile/edit-profile");
   };
 
+  console.log(profile);
   return (
     <ScrollView>
       <View className="flex h-full gap-12 p-4">
