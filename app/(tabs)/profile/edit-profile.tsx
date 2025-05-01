@@ -27,7 +27,7 @@ export default function EditProfile() {
 
   return (
     <ScrollView>
-      <View className="flex h-full gap-20 p-4">
+      <View className="flex h-full gap-6 p-4">
         {/* Upload profile picture */}
         <View className="flex items-center gap-3 mt-16">
           <Pressable onPress={uploadPhoto}>
@@ -35,13 +35,15 @@ export default function EditProfile() {
           </Pressable>
         </View>
 
-        <Text className="text-lg">User name</Text>
-        <TextInput
-          placeholder={"Edit your name"}
-          value={name}
-          onChangeText={setName}
-          className="h-10 border border-black rounded-lg p-2"
-        />
+        <View className="flex gap-3">
+          <Text className="text-lg">User name</Text>
+          <TextInput
+            placeholder={"Edit your name"}
+            value={name}
+            onChangeText={setName}
+            className="h-10 border border-black rounded-lg p-2"
+          />
+        </View>
 
         {/* Action buttons */}
         <View className="flex flex-row items-center justify-between gap-2">

@@ -18,7 +18,8 @@ export default function Settings() {
   return (
     <>
       <ScrollView>
-        <View className="flex h-full gap-4 p-4">
+        <View className="flex h-full gap-6 p-4">
+          <Text className="font-bold">Account</Text>
           <Pressable
             className="flex flex-row gap-2"
             onPress={openPasswordModal}
@@ -28,6 +29,13 @@ export default function Settings() {
               <Text className="text-lg">Change your password</Text>
             </View>
           </Pressable>
+          <Pressable className="flex flex-row gap-2" onPress={openEmailModal}>
+            <View className="flex flex-row gap-2 items-center">
+              <Fontisto name="email" size={24} color="black" />
+              <Text className="text-lg">Set a different email</Text>
+            </View>
+          </Pressable>
+          <Text className="font-bold">App</Text>
           <View className="flex flex-row gap-2 items-center">
             <MaterialCommunityIcons
               name="theme-light-dark"
@@ -36,12 +44,6 @@ export default function Settings() {
             />
             <Text className="text-lg">Dark mode</Text>
           </View>
-          <Pressable className="flex flex-row gap-2" onPress={openEmailModal}>
-            <View className="flex flex-row gap-2 items-center">
-              <Fontisto name="email" size={24} color="black" />
-              <Text className="text-lg">Set a different email</Text>
-            </View>
-          </Pressable>
         </View>
       </ScrollView>
       {/* Password modal */}
