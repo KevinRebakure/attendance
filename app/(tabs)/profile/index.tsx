@@ -1,14 +1,16 @@
+import { useProfileStore } from "@/stores/profileStore";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import * as Linking from "expo-linking";
+import { Link, useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
-import { useRouter } from "expo-router";
-import { useProfileStore } from "@/stores/profileStore";
 export default function Profile() {
-  const {profile} = useProfileStore()
+  const { profile } = useProfileStore();
   const router = useRouter();
   const deleteAccount = () => {
     console.log("Delete account");
@@ -33,7 +35,7 @@ export default function Profile() {
           </View>
           <View>
             <Text className="text-xl font-bold text-center">
-             {profile.username}
+              {profile.username}
             </Text>
             <Text className="text-center">{profile.email}</Text>
           </View>
@@ -88,6 +90,25 @@ export default function Profile() {
           <View className="flex flex-row gap-2">
             <AntDesign name="rocket1" size={24} color="black" />
             <Text className="text-lg">rebakure.com</Text>
+          </View>
+
+          {/* Portals */}
+          <View className="flex flex-row gap-3 mt-12 items-center">
+            <Link href="https://github.com/KevinRebakure/">
+              <AntDesign name="github" size={24} color="black" />
+            </Link>
+            <Link href="https://www.linkedin.com/in/kevin-rebakure-91063a301/">
+              <AntDesign name="linkedin-square" size={24} color="black" />
+            </Link>
+            <Link href="https://x.com/kevinrebakuree/">
+              <FontAwesome6 name="x-twitter" size={24} color="black" />
+            </Link>
+            <Link href="https://www.instagram.com/kevinrebakure/">
+              <AntDesign name="instagram" size={24} color="black" />
+            </Link>
+            <Link href="mailto:kevinrebakure@gmail.com">
+              <MaterialCommunityIcons name="gmail" size={28} color="black" />
+            </Link>
           </View>
         </View>
 

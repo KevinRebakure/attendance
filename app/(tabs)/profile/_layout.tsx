@@ -5,7 +5,7 @@ function ProfileLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
-        name="editProfile"
+        name="edit-profile"
         options={{
           presentation: "modal",
           headerTitle: "Edit profile",
