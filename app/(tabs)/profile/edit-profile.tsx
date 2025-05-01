@@ -1,4 +1,3 @@
-import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -14,9 +13,6 @@ export default function EditProfile() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [repeatNewPassword, setRepeatNewPassword] = useState("");
 
   const uploadPhoto = () => {
     console.log("Upload a new photo");
@@ -56,31 +52,7 @@ export default function EditProfile() {
               placeholder="Set a different email"
             />
           </View>
-
-          {/* Password */}
-          <View className="flex gap-4">
-            <Text className="text-xl font-bold">Change your password</Text>
-            <PasswordInputField
-              value={currentPassword}
-              setValue={setCurrentPassword}
-              label="Enter your current password"
-              placeholder="Enter your current password"
-            />
-            <PasswordInputField
-              value={newPassword}
-              setValue={setNewPassword}
-              label="New password"
-              placeholder="Enter new password"
-            />
-            <PasswordInputField
-              value={repeatNewPassword}
-              setValue={setRepeatNewPassword}
-              label="Repeat new password"
-              placeholder="Repeat new password"
-            />
-          </View>
         </View>
-
         {/* Action buttons */}
         <View className="flex flex-row items-center justify-between gap-2">
           <Pressable
@@ -121,50 +93,6 @@ const InputField = ({
         onChangeText={setValue}
         className="h-10 border border-black rounded-lg p-2"
       />
-    </View>
-  );
-};
-
-const PasswordInputField = ({
-  label,
-  setValue,
-  value,
-  placeholder,
-}: {
-  label: string;
-  placeholder: string;
-  setValue: (text: string) => void;
-  value: string;
-}) => {
-  const [safeEntryOn, setSafeEntryOn] = useState(true);
-
-  const toggleEye = () => {
-    setSafeEntryOn((prev) => !prev);
-  };
-
-  const handleTextChange = (text: string) => {
-    setValue(text);
-  };
-
-  return (
-    <View className="flex gap-2">
-      <Text className="text-lg">{label}</Text>
-      <View className="flex flex-row items-center gap-2 border border-black rounded-lg py-1 px-2">
-        <TextInput
-          value={value}
-          onChangeText={handleTextChange}
-          secureTextEntry={safeEntryOn}
-          placeholder={placeholder}
-          className="flex-1 flex-row flex justify-center items-center"
-        />
-        <Pressable onPress={toggleEye}>
-          {safeEntryOn ? (
-            <Feather name="eye-off" size={24} color="black" />
-          ) : (
-            <Feather name="eye" size={24} color="black" />
-          )}
-        </Pressable>
-      </View>
     </View>
   );
 };
