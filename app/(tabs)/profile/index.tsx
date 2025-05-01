@@ -62,10 +62,12 @@ export default function Profile() {
         {/* Support section */}
         <View className="w-full flex gap-5">
           <Text className="font-bold">Support us</Text>
-          <View className="flex flex-row gap-2">
-            <AntDesign name="github" size={24} color="black" />
-            <Text className="text-lg">Star our repo</Text>
-          </View>
+          <Link href="https://github.com/KevinRebakure/attendance-mobile">
+            <View className="flex flex-row gap-2">
+              <AntDesign name="github" size={24} color="black" />
+              <Text className="text-lg">Star our repo</Text>
+            </View>
+          </Link>
           <View className="flex flex-row gap-2">
             <FontAwesome name="heart-o" size={24} color="black" />
             <Text className="text-lg">Sponsor</Text>
