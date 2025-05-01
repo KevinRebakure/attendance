@@ -11,6 +11,13 @@ function ProfileLayout() {
           headerTitle: "Edit profile",
         }}
       />
+      <Stack.Screen
+        name="settings"
+        options={{
+          presentation: "modal",
+          headerTitle: "Settings",
+        }}
+      />
     </Stack>
   );
 }

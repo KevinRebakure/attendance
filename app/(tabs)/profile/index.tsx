@@ -22,6 +22,10 @@ export default function Profile() {
     router.push("/profile/edit-profile");
   };
 
+  const settings = () => {
+    router.push("/profile/settings");
+  };
+
   console.log(profile);
   return (
     <ScrollView>
@@ -43,7 +47,7 @@ export default function Profile() {
         </View>
 
         {/* Action buttons */}
-        <View className="flex flex-row gap-2">
+        <View className="flex flex-row gap-2 justify-center">
           <Pressable className="border p-2 rounded-lg" onPress={logOut}>
             <View className="flex flex-row gap-1">
               <SimpleLineIcons name="logout" size={24} color="black" />
@@ -55,6 +59,13 @@ export default function Profile() {
             <View className="flex flex-row gap-1">
               <Feather name="edit-3" size={24} color="black" />
               <Text className="text-lg">Edit profile</Text>
+            </View>
+          </Pressable>
+
+          <Pressable className="border p-2 rounded-lg" onPress={settings}>
+            <View className="flex flex-row gap-1">
+              <Ionicons name="settings-outline" size={24} color="black" />
+              <Text className="text-lg">Settings</Text>
             </View>
           </Pressable>
         </View>
