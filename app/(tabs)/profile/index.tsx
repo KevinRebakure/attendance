@@ -12,9 +12,7 @@ import { Image, Pressable, ScrollView, Text, View } from "react-native";
 export default function Profile() {
   const { profile } = useProfileStore();
   const router = useRouter();
-  const deleteAccount = () => {
-    console.log("Delete account");
-  };
+
   const logOut = () => {
     console.log("Logout");
   };
@@ -125,19 +123,6 @@ export default function Profile() {
             </Link>
           </View>
         </View>
-
-        <Pressable onPress={deleteAccount}>
-          <View className="flex flex-row gap-2 border border-red-600 p-3 rounded-xl w-52">
-            <MaterialCommunityIcons
-              name="delete-outline"
-              size={24}
-              color="red"
-            />
-            <Text className="text-red-600 text-lg font-bold">
-              Delete account
-            </Text>
-          </View>
-        </Pressable>
       </View>
     </ScrollView>
   );

@@ -15,6 +15,10 @@ export default function Settings() {
   const openEmailModal = () => setEmailModal(true);
   const closeEmailModal = () => setEmailModal(false);
 
+  const deleteAccount = () => {
+    console.log("Delete account");
+  };
+
   return (
     <>
       <ScrollView>
@@ -33,6 +37,18 @@ export default function Settings() {
             <View className="flex flex-row gap-2 items-center">
               <Fontisto name="email" size={24} color="black" />
               <Text className="text-lg">Set a different email</Text>
+            </View>
+          </Pressable>
+          <Pressable onPress={deleteAccount}>
+            <View className="flex flex-row gap-2 border border-red-600 p-3 rounded-xl w-52">
+              <MaterialCommunityIcons
+                name="delete-outline"
+                size={24}
+                color="red"
+              />
+              <Text className="text-red-600 text-lg font-bold">
+                Delete account
+              </Text>
             </View>
           </Pressable>
           <Text className="font-bold">App</Text>
