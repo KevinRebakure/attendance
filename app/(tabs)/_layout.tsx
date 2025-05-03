@@ -1,7 +1,8 @@
-import { Colors } from "@/constants/colors";
+import CustomBottomTabsBar from "@/components/CustomBottomTabsBar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link, Tabs, usePathname } from "expo-router";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function TabsLayout() {
   const pathname = usePathname();
@@ -9,32 +10,10 @@ export default function TabsLayout() {
   const onEvents = pathname.includes("events");
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.secondaryText,
-        tabBarShowLabel: true,
-        headerShadowVisible: false,
-        tabBarStyle: {
-          height: 60,
-          margin: 12,
-          borderRadius: 12,
-        },
-        tabBarHideOnKeyboard: true,
-      }}
-    >
+    <Tabs tabBar={(props) => <CustomBottomTabsBar {...props} />}>
       <Tabs.Screen
         name="(people)"
         options={{
-          title: "People",
-          headerTitleStyle: { display: "none" },
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? "people" : "people-outline"}
-              color={color}
-              size={24}
-            />
-          ),
           headerLeft: () => (
             <View className="flex flex-row gap-4 m-3">
               <Link href="/events/host" className="text-xl">
@@ -60,62 +39,8 @@ export default function TabsLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "QR Code",
-          tabBarLabelStyle: {
-            display: "none",
-          },
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                width: 74,
-                height: 74,
-                borderRadius: 35,
-                justifyContent: "center",
-                alignItems: "center",
-                bottom: 8,
-                borderWidth: 2,
-                borderColor: focused ? Colors.primary : Colors.white,
-              }}
-            >
-              <View
-                style={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: 35,
-                  backgroundColor: focused ? Colors.primary : Colors.white,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderWidth: 2,
-                  borderColor: focused ? Colors.white : Colors.secondaryText,
-                }}
-              >
-                <Ionicons
-                  name="qr-code-outline"
-                  color={focused ? Colors.white : Colors.secondaryText}
-                  size={48}
-                />
-              </View>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? "person-circle" : "person-circle-outline"}
-              color={color}
-              size={24}
-            />
-          ),
-        }}
-      />
+      <Tabs.Screen name="index" />
+      <Tabs.Screen name="profile" />
     </Tabs>
   );
 }
