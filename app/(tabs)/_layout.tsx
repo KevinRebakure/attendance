@@ -62,7 +62,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="qrcode"
+        name="(qrcode)"
         options={{
           title: "QR Code",
           tabBarLabelStyle: {

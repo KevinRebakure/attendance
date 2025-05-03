@@ -1,5 +1,5 @@
 import { Link, Stack } from "expo-router";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 function NotFoundScreen() {
   return (
@@ -9,6 +9,7 @@ function NotFoundScreen() {
         <Link href="/" className="text-blue-600 underline">
           Go to Home Screen
         </Link>
+        <Text>Report issue</Text>
       </View>
     </>
   );
