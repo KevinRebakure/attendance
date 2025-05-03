@@ -63,7 +63,7 @@ export default function CustomBottomTabsBar({
               ? icons[route.name as IconKey](isFocused, colors.primary)
               : null}
             <Text style={{ color: isFocused ? colors.primary : colors.text }}>
-              {/*AI fix*/}
+              {/*AI fix on displaying text*/}
 
               {typeof label === "function"
                 ? label({
