@@ -58,6 +58,7 @@ export default function CustomBottomTabsBar({
             onLongPress={onLongPress}
             style={{ flex: 1 }}
           >
+            {/* AI fix on rendering these icons */}
             {Object.keys(icons).includes(route.name)
               ? icons[route.name as IconKey](isFocused, colors.primary)
               : null}
@@ -80,8 +81,8 @@ export default function CustomBottomTabsBar({
   );
 }
 
+// AI fix on typing this icons object
 type IconKey = "(people)" | "index" | "profile";
-
 const icons: Record<IconKey, (focused: boolean, color: string) => JSX.Element> =
   {
     "(people)": (focused: boolean, color: string) => (
