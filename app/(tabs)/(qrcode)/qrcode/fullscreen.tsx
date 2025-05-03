@@ -1,10 +1,12 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useRouter } from "expo-router";
+import { usePathname, useRouter } from "expo-router";
 import { Image, Pressable, View } from "react-native";
 
 export default function FullScreen() {
   const router = useRouter();
   const exitFullScreen = () => router.dismiss();
+  const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <View className="flex items-center justify-center h-full">
