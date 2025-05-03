@@ -1,11 +1,17 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 import { qrCodes } from "..";
+import { useEffect } from "react";
 
 export default function QRCode() {
+  const navigation = useNavigation();
   const { id } = useLocalSearchParams();
   const code = qrCodes.find((code) => code.id === id);
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false, headerTitle: code?.title });
+  }, [code?.title, navigation]);
 
   const share = () => console.log("Share the preview");
   const fullscreen = () => console.log("View in full screen");
@@ -36,7 +42,7 @@ export default function QRCode() {
             className="bg-dividor p-4 flex-1 rounded-lg "
             onPress={fullscreen}
           >
-            <Text className="text-white text-center">View in full screen</Text>
+            <Text className="text-center">View in full screen</Text>
           </Pressable>
           <Pressable
             className="bg-primary p-4 flex-1 rounded-lg "

@@ -29,6 +29,7 @@ export default function TabsLayout() {
         options={{
           title: "People",
           headerTitleStyle: { display: "none" },
+          headerShown: true,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "people" : "people-outline"}
