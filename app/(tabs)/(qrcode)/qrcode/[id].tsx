@@ -1,11 +1,12 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 import { qrCodes } from "..";
 import { useEffect } from "react";
 
 export default function QRCode() {
   const navigation = useNavigation();
+  const router = useRouter();
   const { id } = useLocalSearchParams();
   const code = qrCodes.find((code) => code.id === id);
 
@@ -14,7 +15,7 @@ export default function QRCode() {
   }, [code?.title, navigation]);
 
   const share = () => console.log("Share the preview");
-  const fullscreen = () => console.log("View in full screen");
+  const fullscreen = () => router.push("/qrcode/fullscreen");
   const deleteQRCode = () => console.log("Delete the QR code");
   return (
     <View className="p-4 gap-8">
@@ -26,6 +27,7 @@ export default function QRCode() {
         </Text>
       </View>
 
+      {/* QR code */}
       <View className="mx-auto flex items-center">
         <Image
           source={{
@@ -36,6 +38,7 @@ export default function QRCode() {
         <Text>Expiring in {code?.expiryTime} min</Text>
       </View>
 
+      {/* Action buttons */}
       <View className="gap-3">
         <View className="flex flex-row items-center justify-between gap-2">
           <Pressable

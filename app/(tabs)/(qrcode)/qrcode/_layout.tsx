@@ -1,5 +1,10 @@
 import { Stack } from "expo-router";
 
 export default function QRCodeLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack>
+      <Stack.Screen name="[id]" />
+      <Stack.Screen name="fullscreen" options={{ headerShown: false }} />
+    </Stack>
+  );
 }
