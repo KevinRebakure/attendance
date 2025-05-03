@@ -1,6 +1,7 @@
 import QRActionInfoModal from "@/components/modals/QRActionInfoModal";
 import { useProfileStore } from "@/stores/profileStore";
 import Feather from "@expo/vector-icons/Feather";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 
@@ -26,7 +27,7 @@ export default function QRCode() {
 
       <FlatList
         data={qrCodes}
-        renderItem={({ item }) => <QRItem title={item.title} />}
+        renderItem={({ item }) => <QRItem title={item.title} id={item.id} />}
         keyExtractor={(item) => item.id}
       />
 
@@ -45,9 +46,14 @@ export default function QRCode() {
   );
 }
 
-const QRItem = ({ title }: { title: string }) => (
-  <View className="py-4 border-b border-dividor mx-3 flex flex-row justify-between items-center">
-    <Text>{title}</Text>
-    <Feather name="chevron-right" size={24} color="black" />
-  </View>
-);
+const QRItem = ({ title, id }: { title: string; id: string }) => {
+  const router = useRouter();
+  return (
+    <Pressable onPress={() => router.push(`/qrcode/${id}`)}>
+      <View className="py-4 border-b border-dividor mx-3 flex flex-row justify-between items-center">
+        <Text>{title}</Text>
+        <Feather name="chevron-right" size={24} color="black" />
+      </View>
+    </Pressable>
+  );
+};
