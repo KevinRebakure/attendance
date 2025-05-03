@@ -1,8 +1,9 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import React, { useEffect } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import { qrCodes } from "..";
-import { useEffect } from "react";
 
 export default function QRCode() {
   const navigation = useNavigation();
@@ -11,7 +12,7 @@ export default function QRCode() {
   const code = qrCodes.find((code) => code.id === id);
 
   useEffect(() => {
-    navigation.setOptions({ headerShown: false, headerTitle: code?.title });
+    navigation.setOptions({ headerShown: true, headerTitle: code?.title });
   }, [code?.title, navigation]);
 
   const share = () => console.log("Share the preview");
@@ -20,7 +21,6 @@ export default function QRCode() {
   return (
     <View className="p-4 gap-8">
       <View className="flex gap-1">
-        <Text className="text-2xl font-bold">{code?.title}</Text>
         <Text>{code?.eventDate}</Text>
         <Text className="text-xs text-secondaryText">
           {code?.startTime} - {code?.endTime}
@@ -42,16 +42,26 @@ export default function QRCode() {
       <View className="gap-3">
         <View className="flex flex-row items-center justify-between gap-2">
           <Pressable
-            className="bg-dividor p-4 flex-1 rounded-lg "
+            className="bg-dividor p-3 flex-1 rounded-lg "
             onPress={fullscreen}
           >
-            <Text className="text-center">View in full screen</Text>
+            <View className="flex flex-row gap-2">
+              <MaterialCommunityIcons
+                name="fullscreen"
+                size={24}
+                color="black"
+              />
+              <Text className="text-center">View in full screen</Text>
+            </View>
           </Pressable>
           <Pressable
-            className="bg-primary p-4 flex-1 rounded-lg "
+            className="bg-primary p-3 flex-1 rounded-lg "
             onPress={share}
           >
-            <Text className="text-white text-center">Share the preview</Text>
+            <View className="flex flex-row gap-2">
+              <Ionicons name="eye-outline" size={24} color="white" />
+              <Text className="text-white text-center">Share the preview</Text>
+            </View>
           </Pressable>
         </View>
 
