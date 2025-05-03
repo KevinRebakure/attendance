@@ -1,10 +1,10 @@
-import ChangePasswordModal from "@/components/ChangePasswordModal";
+import ChangePasswordModal from "@/components/modals/ChangePasswordModal";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import ChangeEmailModal from "@/components/ChangeEmailModal";
+import ChangeEmailModal from "@/components/modals/ChangeEmailModal";
 
 export default function Settings() {
   const [passwordModal, setPasswordModal] = useState(false);

@@ -14,7 +14,10 @@ export default function TabsLayout() {
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.secondaryText,
         tabBarShowLabel: true,
+
+        headerShown: false,
         headerShadowVisible: false,
+        // Similar to tabBarStyle in the <Tabs.Screen name="(qrcode)"> ... in the file, to hide the tabBar on preview screen of the QR code
         tabBarStyle: {
           height: 60,
           margin: 12,
@@ -28,6 +31,7 @@ export default function TabsLayout() {
         options={{
           title: "People",
           headerTitleStyle: { display: "none" },
+          headerShown: true,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "people" : "people-outline"}
@@ -61,12 +65,21 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="(qrcode)"
         options={{
           title: "QR Code",
           tabBarLabelStyle: {
             display: "none",
           },
+
+          // Similar to tabBarStyle in the <Tabs... in this file, to avoid overriding default styles of the tab bar
+          tabBarStyle: {
+            height: 60,
+            margin: 12,
+            borderRadius: 12,
+            display: pathname === "/qrcode/fullscreen" ? "none" : "flex",
+          },
+
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -106,7 +119,7 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: "Profile",
-          headerShown: false,
+
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "person-circle" : "person-circle-outline"}
