@@ -14,6 +14,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.secondaryText,
         tabBarShowLabel: true,
+        headerShown: false,
         headerShadowVisible: false,
         tabBarStyle: {
           height: 60,
@@ -61,7 +62,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="qrcode"
         options={{
           title: "QR Code",
           tabBarLabelStyle: {
@@ -106,7 +107,7 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: "Profile",
-          headerShown: false,
+
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "person-circle" : "person-circle-outline"}
