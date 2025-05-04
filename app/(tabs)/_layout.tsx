@@ -77,7 +77,9 @@ export default function TabsLayout() {
             height: 60,
             margin: 12,
             borderRadius: 12,
-            display: pathname === "/qrcode/fullscreen" ? "none" : "flex",
+            display: ["/qrcode/fullscreen", "/camera"].includes(pathname)
+              ? "none"
+              : "flex",
           },
 
           tabBarIcon: ({ focused }) => (
