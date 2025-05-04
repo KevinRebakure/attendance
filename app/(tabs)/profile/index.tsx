@@ -105,25 +105,32 @@ export default function Profile() {
           </View>
 
           {/* Portals */}
-          <View className="flex flex-row gap-3 mt-12 items-center">
-            <Link href="https://github.com/KevinRebakure/">
-              <AntDesign name="github" size={24} color="black" />
-            </Link>
-            <Link href="https://www.linkedin.com/in/kevin-rebakure-91063a301/">
-              <AntDesign name="linkedin-square" size={24} color="black" />
-            </Link>
-            <Link href="https://x.com/kevinrebakuree/">
-              <FontAwesome6 name="x-twitter" size={24} color="black" />
-            </Link>
-            <Link href="https://www.instagram.com/kevinrebakure/">
-              <AntDesign name="instagram" size={24} color="black" />
-            </Link>
-            <Link href="mailto:kevinrebakure@gmail.com">
-              <MaterialCommunityIcons name="gmail" size={28} color="black" />
-            </Link>
+          <View className="mt-12 gap-5">
+            <Text className="font-bold">Connect with us</Text>
+            <Portals />
           </View>
         </View>
       </View>
     </ScrollView>
   );
 }
+
+const Portals = () => (
+  <View className="flex flex-row gap-3 items-center">
+    <Link href="https://github.com/KevinRebakure/">
+      <AntDesign name="github" size={24} color="black" />
+    </Link>
+    <Link href="https://www.linkedin.com/in/kevin-rebakure-91063a301/">
+      <AntDesign name="linkedin-square" size={24} color="black" />
+    </Link>
+    <Link href="https://x.com/kevinrebakuree/">
+      <FontAwesome6 name="x-twitter" size={24} color="black" />
+    </Link>
+    <Link href="https://www.instagram.com/kevinrebakure/">
+      <AntDesign name="instagram" size={24} color="black" />
+    </Link>
+    <Link href="mailto:kevinrebakure@gmail.com">
+      <MaterialCommunityIcons name="gmail" size={28} color="black" />
+    </Link>
+  </View>
+);
