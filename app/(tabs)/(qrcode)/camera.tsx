@@ -2,14 +2,18 @@ import { CameraPermissionsModal } from "@/components";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { CameraView, useCameraPermissions } from "expo-camera";
+import { useRouter } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
 export default function Camera() {
-  const closeCamera = () => console.log("Close camera!");
+  const [permission, requestPermission] = useCameraPermissions();
+  const router = useRouter();
+
+  const closeCamera = () => {
+    router.dismiss();
+  };
   const scanFromImage = () => console.log("Scan from image");
   const turnOnFlashlight = () => console.log("Turn on flashlight");
-
-  const [permission, requestPermission] = useCameraPermissions();
 
   if (!permission) {
     return null;
@@ -21,7 +25,13 @@ export default function Camera() {
 
   return (
     <>
-      <CameraView>
+      <CameraView
+        barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
+        onBarcodeScanned={({ data }) => {
+          console.log(data);
+          router.dismiss();
+        }}
+      >
         <View className="h-full p-6">
           <View className="flex items-center h-full justify-evenly">
             <Text className="text-2xl font-bold text-primary">
