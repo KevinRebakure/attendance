@@ -11,7 +11,7 @@ export default function Camera() {
   return (
     <CameraView>
       <View className="h-full p-6">
-        <View className="flex items-center h-full gap-24">
+        <View className="flex items-center h-full justify-evenly">
           <Text className="text-2xl font-bold text-primary">Scan QR code</Text>
           <Image
             source={require("@/assets/images/qr-scan.png")}
