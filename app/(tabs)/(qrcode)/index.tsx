@@ -1,11 +1,11 @@
-import { useProfileStore } from "@/stores/userProfileStore";
+import { useUserProfileStore } from "@/stores/userProfileStore";
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
 import { FlatList, Pressable, Text, View } from "react-native";
 
 export default function QRCode() {
-  const { profile } = useProfileStore();
-  const firstName = profile.username.split(" ")[0];
+  const { userProfile } = useUserProfileStore();
+  const firstName = userProfile.userName.split(" ")[0];
 
   const scan = () => console.log("Scan QR code");
   const generate = () => console.log("Generate QR code");
