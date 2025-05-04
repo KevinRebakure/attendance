@@ -6,8 +6,9 @@ import { FlatList, Pressable, Text, View } from "react-native";
 export default function QRCode() {
   const { userProfile } = useUserProfileStore();
   const firstName = userProfile.userName.split(" ")[0];
+  const router = useRouter();
 
-  const scan = () => console.log("Scan QR code");
+  const scan = () => router.push("/camera");
   const generate = () => console.log("Generate QR code");
 
   return (
