@@ -41,7 +41,7 @@ export default function TabsLayout() {
           ),
           headerLeft: () => (
             <View className="flex flex-row gap-4 m-3">
-              <Link href="/events/host" className="text-xl">
+              <Link href="/events" className="text-xl">
                 <Ionicons
                   name={
                     onEvents ? "calendar-number" : "calendar-number-outline"
@@ -50,7 +50,7 @@ export default function TabsLayout() {
                   size={28}
                 />
               </Link>
-              <Link href="/groups/owned-by-me" className="text-xl">
+              <Link href="/groups" className="text-xl">
                 <Ionicons
                   name={onGroups ? "people" : "people-outline"}
                   color={onGroups ? Colors.primary : Colors.secondaryText}
