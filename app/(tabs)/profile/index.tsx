@@ -1,4 +1,4 @@
-import { useProfileStore } from "@/stores/profileStore";
+import { useUserProfileStore } from "@/stores/userProfileStore";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -10,7 +10,7 @@ import { Link, useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 
 export default function Profile() {
-  const { profile } = useProfileStore();
+  const { userProfile } = useUserProfileStore();
   const router = useRouter();
 
   const logOut = () => {
@@ -24,7 +24,7 @@ export default function Profile() {
     router.push("/profile/settings");
   };
 
-  console.log(profile);
+  console.log(userProfile);
   return (
     <ScrollView>
       <View className="flex h-full gap-12 p-4">
@@ -38,9 +38,9 @@ export default function Profile() {
           </View>
           <View>
             <Text className="text-xl font-bold text-center">
-              {profile.username}
+              {userProfile.userName}
             </Text>
-            <Text className="text-center">{profile.email}</Text>
+            <Text className="text-center">{userProfile.email}</Text>
           </View>
         </View>
 

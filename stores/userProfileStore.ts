@@ -1,50 +1,50 @@
 import { create } from "zustand";
 
-interface Profile {
-  username: string;
+interface UserProfile {
+  userName: string;
   email: string;
   password: string;
 }
 
-interface ProfileStore {
-  profile: Profile;
+interface UserProfileStore {
+  userProfile: UserProfile;
   // changeUserName: (newUserName: string) => void;
   // changeEmail: (newEmail: string) => void;
   // changePassword: (newPassword: string) => void;
-  updateProfile: (data: Partial<Profile>) => void;
+  updateProfile: (data: Partial<UserProfile>) => void;
 }
 
-export const useProfileStore = create<ProfileStore>((set) => ({
-  profile: {
-    username: "Kevin Rebakure",
+export const useUserProfileStore = create<UserProfileStore>((set) => ({
+  userProfile: {
+    userName: "Kevin Rebakure",
     email: "kevinrebakure@gmail.com",
     password: "abcd@1234E",
   },
   // changeUserName: (newUserName: string) =>
   //   set((state) => ({
-  //     profile: {
-  //       ...state.profile,
-  //       username: newUserName,
+  //     userProfile: {
+  //       ...state.userProfile,
+  //       userName: newUserName,
   //     },
   //   })),
   // changeEmail: (newEmail: string) =>
   //   set((state) => ({
-  //     profile: {
-  //       ...state.profile,
+  //     userProfile: {
+  //       ...state.userProfile,
   //       email: newEmail,
   //     },
   //   })),
   // changePassword: (newPassword: string) =>
   //   set((state) => ({
-  //     profile: {
-  //       ...state.profile,
+  //     userProfile: {
+  //       ...state.userProfile,
   //       password: newPassword,
   //     },
   //   })),
-  updateProfile: (data: Partial<Profile>) =>
+  updateProfile: (data: Partial<UserProfile>) =>
     set((state) => ({
-      profile: {
-        ...state.profile,
+      userProfile: {
+        ...state.userProfile,
         ...data,
       },
     })),

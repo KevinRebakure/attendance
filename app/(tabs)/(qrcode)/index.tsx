@@ -1,4 +1,4 @@
-import { useProfileStore } from "@/stores/profileStore";
+import { useProfileStore } from "@/stores/userProfileStore";
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
 import { FlatList, Pressable, Text, View } from "react-native";
