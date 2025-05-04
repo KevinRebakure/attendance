@@ -8,7 +8,9 @@ export default function QRCode() {
   const firstName = userProfile.userName.split(" ")[0];
   const router = useRouter();
 
-  const scan = () => router.push("/camera");
+  const scan = () => {
+    router.push("/camera");
+  };
   const generate = () => console.log("Generate QR code");
 
   return (
