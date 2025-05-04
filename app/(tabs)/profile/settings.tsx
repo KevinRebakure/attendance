@@ -5,19 +5,20 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import ChangeEmailModal from "@/components/modals/ChangeEmailModal";
+import DeleteAccountModal from "@/components/modals/DeleteAccountModal";
 
 export default function Settings() {
   const [passwordModal, setPasswordModal] = useState(false);
   const [emailModal, setEmailModal] = useState(false);
+  const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const openPasswordModal = () => setPasswordModal(true);
   const closePasswordModal = () => setPasswordModal(false);
 
   const openEmailModal = () => setEmailModal(true);
   const closeEmailModal = () => setEmailModal(false);
+  const closeDeleteAccountModal = () => setDeleteAccountModal(false);
 
-  const deleteAccount = () => {
-    console.log("Delete account");
-  };
+  const deleteAccount = () => setDeleteAccountModal(true);
 
   return (
     <>
@@ -62,12 +63,16 @@ export default function Settings() {
           </View>
         </View>
       </ScrollView>
-      {/* Password modal */}
+      {/* MOdals */}
       <ChangePasswordModal
         closeModal={closePasswordModal}
         isOpen={passwordModal}
       />
       <ChangeEmailModal closeModal={closeEmailModal} isOpen={emailModal} />
+      <DeleteAccountModal
+        closeModal={closeDeleteAccountModal}
+        isOpen={deleteAccountModal}
+      />
     </>
   );
 }
