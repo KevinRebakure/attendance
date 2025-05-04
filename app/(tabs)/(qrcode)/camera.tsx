@@ -16,9 +16,7 @@ export default function Camera() {
   }
 
   if (!permission.granted) {
-    return (
-      <CameraPermissionsModal requestPermission={requestPermission} isOpen />
-    );
+    return <CameraPermissionsModal requestPermission={requestPermission} />;
   }
 
   return (
