@@ -11,7 +11,7 @@ export default function QRCode() {
   const scan = () => {
     router.push("/camera");
   };
-  const generate = () => console.log("Generate QR code");
+  const generate = () => router.push("/generate");
 
   return (
     <View className="p-4 flex justify-between h-ful gap-4">
