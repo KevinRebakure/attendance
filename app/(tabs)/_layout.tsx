@@ -7,7 +7,7 @@ export default function TabsLayout() {
   const pathname = usePathname();
   const onGroups = pathname.includes("groups");
   const onEvents = pathname.includes("events");
-
+  console.log(pathname);
   return (
     <Tabs
       screenOptions={{
